@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pharmacie & Ordonnance</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <h1>💊 Trouvez vos médicaments facilement</h1>
+</header>
+
+<!-- Choix mode -->
+<section class="choice-section">
+    <label><input type="radio" name="mode" value="upload" checked> Envoyer mon ordonnance</label>
+    <label><input type="radio" name="mode" value="manuel"> Remplir manuellement</label>
+</section>
+
+<!-- Upload ordonnance -->
+<section id="uploadSection" class="upload-section">
+    <input type="file" id="ordonnanceInput" accept="image/*">
+    <button onclick="analyserOrdonnance()">Analyser l'ordonnance</button>
+    <div id="medicamentsDetected" class="medicaments-section"></div>
+</section>
+
+<!-- Formulaire manuel -->
+<section id="manuelSection" class="medicaments-section" style="display:none;">
+    <label for="medicamentsInput"><strong>Écrivez vos médicaments :</strong></label>
+    <textarea id="medicamentsInput" rows="4" placeholder="Ex : Paracétamol, Vitamine C, Amoxicilline"></textarea>
+    <button onclick="filtrerPharmaciesManuel()">Voir les pharmacies</button>
+</section>
+
+<section id="result" class="pharmacies-section"></section>
+
+<div class="history-button">
+    <button type="button" onclick="afficherCommandes()">Voir mes commandes</button>
+    <button type="button" onclick="rechercherCommandesParDate()">🔍 Rechercher par date</button>
+    <button type="button" onclick="supprimerCommandesParDate()">❌ Supprimer par date</button>
+
+</div>
+
+<section id="commandes" class="commandes-section"></section>
+
+<script src="https://cdn.jsdelivr.net/npm/tesseract.js@4.0.2/dist/tesseract.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
